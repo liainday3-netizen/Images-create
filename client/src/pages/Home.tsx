@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useTransform, useSpring, useScroll } from "framer-motion";
-import logoImg from "../assets/images/logo.png";
+import logoImg from "../assets/images/metatron-logo.png"; // Changed to Metatron Logo
 import aiGodmodeImg from "../assets/images/ai-godmode.png";
-import tokenLogoImg from "../assets/images/token-logo.png";
+import tokenLogoImg from "../assets/images/metatron-token.png"; // Changed to Metatron Token
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Download, Share2, Sparkles, ChevronDown, Terminal, Cpu, Hexagon, Wand2, Layers } from "lucide-react";
@@ -150,7 +150,7 @@ export default function Home() {
           <motion.div variants={textVariant} className="flex justify-center mb-12">
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10 transition-colors cursor-pointer">
               <Sparkles className="w-4 h-4 text-white/70" />
-              <span className="text-xs font-light tracking-[0.25em] uppercase text-white/80">The Next Generation</span>
+              <span className="text-xs font-light tracking-[0.25em] uppercase text-white/80">Sacred Geometry</span>
             </div>
           </motion.div>
 
@@ -160,7 +160,7 @@ export default function Home() {
           </motion.h1>
 
           <motion.p variants={textVariant} className="text-white/50 text-lg md:text-xl font-light max-w-xl mx-auto leading-relaxed mt-12">
-            An exponential leap in brand identity. We craft monumental digital experiences that defy expectation.
+            An exponential leap in brand identity. We craft monumental digital experiences built on fundamental laws of the universe.
           </motion.p>
         </motion.div>
 
@@ -237,9 +237,9 @@ export default function Home() {
         <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center pointer-events-auto">
           <div className="md:col-span-5 flex flex-col gap-12">
             <div>
-              <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 tracking-tight">The Anatomy</h2>
+              <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 tracking-tight">Metatron's Cube</h2>
               <p className="text-white/50 text-lg font-light leading-relaxed">
-                A geometric triumph. Designed on a molecular level to maintain perfect structural integrity across infinite scales. Every curve, absolute. Every angle, deliberate.
+                A geometric triumph. Designed on a molecular level to maintain perfect structural integrity across infinite scales. Contains all five Platonic solids, representing the building blocks of the universe.
               </p>
             </div>
             
@@ -254,10 +254,10 @@ export default function Home() {
             <div className="absolute inset-0 bg-primary/5 blur-[100px] -z-10" />
 
             {[
-              { num: "01", title: "Golden Ratio", text: "Proportions derived from nature's absolute law." },
-              { num: "02", title: "Negative Space", text: "The absence of form creates the strongest shape." },
-              { num: "03", title: "Kinetic Motion", text: "Built to move fluidly in a digital dimension." },
-              { num: "04", title: "Infinite Scale", text: "Vector precision from favicons to skyscrapers." }
+              { num: "01", title: "13 Circles", text: "Representing the 13 archangels and the interconnectedness of all life." },
+              { num: "02", title: "Platonic Solids", text: "Contains the tetrahedron, hexahedron, octahedron, dodecahedron, and icosahedron." },
+              { num: "03", title: "Universal Grid", text: "Built on the fundamental grid of creation, moving fluidly in digital dimensions." },
+              { num: "04", title: "Infinite Scale", text: "Absolute vector precision scaling perfectly from subatomic to macro levels." }
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -338,7 +338,7 @@ export default function Home() {
               <div className="space-y-3">
                 <label className="text-xs tracking-[0.1em] uppercase font-light text-white/50">Token Designation (Symbol)</label>
                 <Input 
-                  placeholder="$LUM" 
+                  placeholder="$MTA" 
                   className="bg-black/50 border-white/10 text-white placeholder:text-white/20 h-14 rounded-xl px-6 font-mono tracking-widest uppercase focus-visible:ring-1 focus-visible:ring-white/30"
                 />
               </div>
@@ -430,7 +430,7 @@ export default function Home() {
                       animate={{ y: [-10, 10, -10] }}
                       transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                       src={tokenLogoImg} 
-                      alt="Generated Token" 
+                      alt="Generated Metatron Token" 
                       className="w-full h-full object-contain filter drop-shadow-[0_0_50px_rgba(255,255,255,0.2)]"
                     />
                   </motion.div>

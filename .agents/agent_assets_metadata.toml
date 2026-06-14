@@ -12,3 +12,15 @@ id = "tpnaXeOP-Sx0beyygPOD_"
 uri = "file://client/src/assets/images/token-logo.png"
 type = "image"
 title = "High quality 3D token logo"
+
+[[generated]]
+id = "5pVEr2vPPqdsxKwBtM7tM"
+uri = "file://client/src/assets/images/metatron-logo.png"
+type = "image"
+title = "Minimalist Metatron Cube logo"
+
+[[generated]]
+id = "WYO04BXaiVy7yVhkhacYN"
+uri = "file://client/src/assets/images/metatron-token.png"
+type = "image"
+title = "3D Golden Metatron Token"
