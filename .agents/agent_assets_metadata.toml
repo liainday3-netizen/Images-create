@@ -6,3 +6,9 @@ id = "PA4S-vtN3yKrBtePqfDNT"
 uri = "file://client/src/assets/images/ai-godmode.png"
 type = "image"
 title = "Premium AI Godmode UI"
+
+[[generated]]
+id = "tpnaXeOP-Sx0beyygPOD_"
+uri = "file://client/src/assets/images/token-logo.png"
+type = "image"
+title = "High quality 3D token logo"
