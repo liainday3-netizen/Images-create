@@ -1,7 +1,8 @@
 import { motion, useMotionValue, useTransform, useSpring, useScroll } from "framer-motion";
 import logoImg from "../assets/images/logo.png";
+import aiGodmodeImg from "../assets/images/ai-godmode.png";
 import { Button } from "@/components/ui/button";
-import { Download, Share2, Sparkles, ChevronDown } from "lucide-react";
+import { Download, Share2, Sparkles, ChevronDown, Terminal, Cpu } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 
 const FloatingOrbs = () => {
@@ -15,7 +16,7 @@ const FloatingOrbs = () => {
           opacity: [0.1, 0.3, 0.1],
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] left-[20%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"
+        className="fixed top-[20%] left-[20%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"
       />
       <motion.div
         animate={{
@@ -25,7 +26,7 @@ const FloatingOrbs = () => {
           opacity: [0.1, 0.2, 0.1],
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute top-[40%] right-[10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]"
+        className="fixed top-[40%] right-[10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]"
       />
       <motion.div
         animate={{
@@ -35,7 +36,7 @@ const FloatingOrbs = () => {
           opacity: [0.05, 0.15, 0.05],
         }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 5 }}
-        className="absolute bottom-[-10%] left-[40%] w-[800px] h-[800px] bg-primary/10 rounded-full blur-[200px]"
+        className="fixed bottom-[-10%] left-[40%] w-[800px] h-[800px] bg-primary/10 rounded-full blur-[200px]"
       />
     </div>
   );
@@ -48,15 +49,23 @@ export default function Home() {
     offset: ["start start", "end end"]
   });
 
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.1], [1, 0.9]);
-  const heroY = useTransform(scrollYProgress, [0, 0.1], [0, 100]);
+  // Section 1: Hero
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.9]);
+  const heroY = useTransform(scrollYProgress, [0, 0.15], [0, 100]);
 
-  const showcaseOpacity = useTransform(scrollYProgress, [0.05, 0.2, 0.4, 0.5], [0, 1, 1, 0]);
-  const showcaseScale = useTransform(scrollYProgress, [0.05, 0.2, 0.4, 0.5], [0.8, 1, 1, 0.9]);
+  // Section 2: Logo Showcase
+  const showcaseOpacity = useTransform(scrollYProgress, [0.1, 0.25, 0.45, 0.55], [0, 1, 1, 0]);
+  const showcaseScale = useTransform(scrollYProgress, [0.1, 0.25, 0.45, 0.55], [0.8, 1, 1, 0.9]);
 
-  const textOpacity = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]);
-  const textY = useTransform(scrollYProgress, [0.4, 0.5], [100, 0]);
+  // Section 3: Specs Grid
+  const textOpacity = useTransform(scrollYProgress, [0.45, 0.55, 0.7, 0.8], [0, 1, 1, 0]);
+  const textY = useTransform(scrollYProgress, [0.45, 0.55], [100, 0]);
+
+  // Section 4: AI Godmode
+  const godmodeOpacity = useTransform(scrollYProgress, [0.75, 0.85], [0, 1]);
+  const godmodeScale = useTransform(scrollYProgress, [0.75, 0.85], [0.9, 1]);
+  const godmodeY = useTransform(scrollYProgress, [0.75, 0.85], [100, 0]);
 
   const showcaseRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
@@ -89,7 +98,7 @@ export default function Home() {
   };
 
   return (
-    <div ref={containerRef} className="bg-[#020202] text-foreground selection:bg-primary/30 selection:text-primary flex flex-col font-sans h-[300vh] relative">
+    <div ref={containerRef} className="bg-[#020202] text-foreground selection:bg-primary/30 selection:text-primary flex flex-col font-sans h-[400vh] relative">
       <FloatingOrbs />
 
       {/* Navigation */}
@@ -97,13 +106,13 @@ export default function Home() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="fixed top-0 w-full z-50 px-8 py-8 flex justify-between items-center mix-blend-difference"
+        className="fixed top-0 w-full z-50 px-8 py-8 flex justify-between items-center mix-blend-difference pointer-events-none"
       >
         <div className="font-serif text-2xl tracking-tighter italic font-light">Lumina</div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 pointer-events-auto">
           <button className="text-xs uppercase tracking-[0.2em] font-light hover:text-white/60 transition-colors">About</button>
           <button className="text-xs uppercase tracking-[0.2em] font-light hover:text-white/60 transition-colors">Works</button>
-          <button className="text-xs uppercase tracking-[0.2em] font-light hover:text-white/60 transition-colors">Contact</button>
+          <button className="text-xs uppercase tracking-[0.2em] font-light hover:text-white/60 transition-colors">AI Core</button>
         </div>
       </motion.nav>
 
@@ -191,12 +200,6 @@ export default function Home() {
                   />
                 </motion.div>
               </div>
-
-              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-6">
-                <Button variant="outline" size="lg" className="rounded-full bg-white/5 border-white/10 hover:bg-white/20 text-white backdrop-blur-md">
-                  <Download className="w-4 h-4 mr-2" /> Download Assets
-                </Button>
-              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -224,7 +227,6 @@ export default function Home() {
           </div>
 
           <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
-            {/* Ambient background for the grid */}
             <div className="absolute inset-0 bg-primary/5 blur-[100px] -z-10" />
 
             {[
@@ -243,6 +245,61 @@ export default function Home() {
                 <p className="text-white/40 font-light text-sm leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* 4. AI Godmode Graphics Integration */}
+      <motion.section
+        style={{ opacity: godmodeOpacity, scale: godmodeScale, y: godmodeY }}
+        className="fixed inset-0 w-full h-screen flex flex-col items-center justify-center z-40 px-6 md:px-12 pointer-events-none"
+      >
+        <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center pointer-events-auto">
+          <div className="text-center mb-12 flex flex-col items-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
+              <Cpu className="w-4 h-4 text-white/70" />
+              <span className="text-xs font-light tracking-[0.2em] uppercase text-white/70">Neural Architecture</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-serif font-light mb-6 tracking-tight">
+              <span className="italic text-white/80">Godmode</span> Assistant
+            </h2>
+            <p className="text-white/50 text-lg font-light max-w-3xl mx-auto leading-relaxed">
+              Omnipresent AI deeply integrated directly into your graphics software. Instantly generate code, manipulate visual nodes, and render reality in real-time.
+            </p>
+          </div>
+
+          <div className="relative w-full aspect-video md:aspect-[21/9] rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_120px_rgba(255,255,255,0.05)] group">
+            {/* Dark gradient overlay for text readability at the bottom */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10 pointer-events-none" />
+            
+            {/* AI Image */}
+            <img 
+              src={aiGodmodeImg} 
+              alt="AI Godmode Interface" 
+              className="w-full h-full object-cover transform-gpu transition-transform duration-1000 group-hover:scale-[1.02]" 
+            />
+            
+            {/* Tech UI Elements overlaying the image */}
+            <div className="absolute top-8 left-8 z-20 hidden md:flex items-center gap-3">
+               <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+               <span className="text-xs uppercase tracking-[0.2em] font-mono text-white/70">Sys.Active // Node.Sync</span>
+            </div>
+
+            <div className="absolute bottom-8 left-8 right-8 z-20 flex flex-col md:flex-row justify-between items-end md:items-center gap-6">
+              <div className="flex gap-4">
+                <div className="bg-black/40 backdrop-blur-xl border border-white/10 px-5 py-2.5 rounded-full flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-white/60" />
+                  <span className="text-xs tracking-[0.15em] uppercase font-light text-white/80">Real-time Code Gen</span>
+                </div>
+                <div className="bg-black/40 backdrop-blur-xl border border-white/10 px-5 py-2.5 rounded-full flex items-center gap-2 hidden sm:flex">
+                  <span className="text-xs tracking-[0.15em] uppercase font-light text-white/80">Visual Node Graph</span>
+                </div>
+              </div>
+
+              <Button size="lg" className="rounded-full px-8 bg-white/10 hover:bg-white/20 text-white backdrop-blur-xl border border-white/20 text-sm tracking-widest uppercase font-light">
+                Initialize Sequence
+              </Button>
+            </div>
           </div>
         </div>
       </motion.section>

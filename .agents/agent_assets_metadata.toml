@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "PA4S-vtN3yKrBtePqfDNT"
+uri = "file://client/src/assets/images/ai-godmode.png"
+type = "image"
+title = "Premium AI Godmode UI"
